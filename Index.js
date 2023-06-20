@@ -1,9 +1,10 @@
+const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-const mongoose = require("mongoose");
 
 const connectDB = require("./config/db.js");
 const cors = require("cors");
+const { ObjectId } = require("bson");
 
 connectDB();
 
@@ -70,7 +71,6 @@ app.delete("/user/:id", async (req, res) => {
       .json({ success: false, message: "Error deleting user", error });
   }
 });
-const { ObjectId } = require("bson");
 app.put("/post/:id", async (req, res) => {
   console.log(req.params.id);
   try {
@@ -95,5 +95,5 @@ app.put("/post/:id", async (req, res) => {
   }
 });
 
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3100;
 app.listen(port, () => console.log(`listening on port ${port}`));
