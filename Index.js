@@ -23,13 +23,16 @@ app.use(
 
 const {login,adduser,post,alluser,deletealluser,deleteusingid,postusingid} =require("./controlers/controler")
 
-  app.post("/log", login);
+
+const {verifyCookie}=require("./midleware/authveri.js")
+
+  app.post("/login", login);
 
 app.post("/adduser",adduser);
 
 app.post("/post",post );
 
-app.get("/alluser",alluser );
+app.get("/alluser",verifyCookie,alluser );
 app.delete("/deleteallusers",deletealluser);
 app.delete("/user/:id",deleteusingid );
 app.put("/post/:id",postusingid );

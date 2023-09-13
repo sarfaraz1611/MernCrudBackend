@@ -15,6 +15,9 @@ const UserSchema = mongoose.Schema({
     // required: true,
     // unique: true,
   },
+  Token:{
+    type:String
+  }
 });
 const login = mongoose.model("logindata", UserSchema);
 
